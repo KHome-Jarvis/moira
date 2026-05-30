@@ -1,0 +1,26 @@
+{
+  "id": "moira",
+  "title": "Moira",
+  "description": "AI-powered GM companion powered by Hermes Gateway",
+  "version": "0.0.1",
+  "authors": [{ "name": "J.A.R.V.I.S." }],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "styles": ["styles/moira.css"],
+  "esmodules": ["scripts/moira.js"],
+  "scripts": ["scripts/moira.js"],
+  "templateVersion": 2,
+  "url": "http://192.168.1.10/Moira",
+  "download": "http://192.168.1.10/Moira/manifest.json",
+  "manifest": "http://192.168.1.10/Moira/manifest.json"
+}
