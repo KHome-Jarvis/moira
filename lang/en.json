@@ -1,6 +1,4 @@
 {
-  "lang": "en",
-  "name": "English",
-  "version": "0.1.0",
-  "source": "en.json"
+  "MODULE.moira": "Moira",
+  "MODULE.moiraDescription": "AI-powered GM companion"
 }
