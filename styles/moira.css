@@ -1,0 +1,47 @@
+/* Moira Chat UI Styles */
+.moira-chat .moira-header {
+  background: #1a1a2e;
+  color: #eee;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #3a3a5a;
+}
+
+.moira-chat .moira-messages {
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+.moira-message {
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.moira-message.user {
+  background: #d1e8ff;
+  text-align: right;
+}
+
+.moira-message.assistant {
+  background: #e8f0e8;
+}
+
+.moira-input-area {
+  display: flex;
+  padding: 8px;
+  border-top: 1px solid #ccc;
+  background: #fff;
+}
+
+.moira-input-area input {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.moira-message.typing {
+  font-style: italic;
+  color: #666;
+}
