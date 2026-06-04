@@ -1,0 +1,33 @@
+<div class="moira-gallery-container">
+  <div class="moira-gallery-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+    <h2><i class="fas fa-images"></i> Moira Gallery</h2>
+    <span style="color: var(--moira-text-muted); font-size: 13px;">{{images.length}} images</span>
+  </div>
+
+  <div class="moira-gallery-grid">
+    {{#if images.length}}
+      {{#each images}}
+      <div class="moira-gallery-item" data-image-id="{{id}}" data-image-url="{{url}}" data-image-prompt="{{prompt}}">
+        <img src="{{url}}" alt="{{prompt}}">
+        <div class="moira-gallery-item-overlay">
+          <div class="moira-gallery-item-prompt">{{prompt}}</div>
+          <div style="display: flex; gap: 4px; margin-top: 4px;">
+            <button data-action="use-image" style="flex: 1; background: var(--moira-primary); color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 11px;">
+              <i class="fas fa-journal"></i> Use
+            </button>
+            <button data-action="delete" style="background: var(--moira-danger); color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 11px;">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    {{else}}
+      <div class="moira-gallery-empty">
+        <i class="fas fa-image" style="font-size: 64px; opacity: 0.2; margin-bottom: 16px;"></i>
+        <p>No images generated yet</p>
+        <p style="font-size: 12px; margin-top: 8px;">Use the chat to generate images with Moira</p>
+      </div>
+    {{/if}}
+  </div>
+</div>

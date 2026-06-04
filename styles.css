@@ -1,0 +1,975 @@
+/**
+ * Moira Module Styles
+ */
+
+/* ============================================================
+   CSS VARIABLES & THEMING
+   ============================================================ */
+:root {
+  --moira-font-family: "Charis SIL", "Noto Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --moira-border-radius: 8px;
+  --moira-transition: 0.2s ease;
+}
+
+/* Default (Purple) Theme */
+.moira-theme-default {
+  --moira-primary: #8b5cf6;
+  --moira-primary-hover: #7c3aed;
+  --moira-secondary: #a78bfa;
+  --moira-accent: #c4b5fd;
+  --moira-bg: #1e1b4b;
+  --moira-bg-light: #312e81;
+  --moira-surface: #252262;
+  --moira-surface-hover: #2d2873;
+  --moira-text: #f5f3ff;
+  --moira-text-muted: #c4b5fd;
+  --moira-border: #4c1d95;
+  --moira-success: #10b981;
+  --moira-danger: #ef4444;
+  --moira-warning: #f59e0b;
+}
+
+/* Ocean Blue Theme */
+.moira-theme-blue {
+  --moira-primary: #3b82f6;
+  --moira-primary-hover: #2563eb;
+  --moira-secondary: #60a5fa;
+  --moira-accent: #93c5fd;
+  --moira-bg: #0f172a;
+  --moira-bg-light: #1e293b;
+  --moira-surface: #1e293b;
+  --moira-surface-hover: #334155;
+  --moira-text: #f1f5f9;
+  --moira-text-muted: #94a3b8;
+  --moira-border: #1e40af;
+  --moira-success: #10b981;
+  --moira-danger: #ef4444;
+  --moira-warning: #f59e0b;
+}
+
+/* Forest Green Theme */
+.moira-theme-green {
+  --moira-primary: #10b981;
+  --moira-primary-hover: #059669;
+  --moira-secondary: #34d399;
+  --moira-accent: #6ee7b7;
+  --moira-bg: #022c22;
+  --moira-bg-light: #064e3b;
+  --moira-surface: #065f46;
+  --moira-surface-hover: #047857;
+  --moira-text: #ecfdf5;
+  --moira-text-muted: #6ee7b7;
+  --moira-border: #065f46;
+  --moira-success: #34d399;
+  --moira-danger: #ef4444;
+  --moira-warning: #f59e0b;
+}
+
+/* Crimson Red Theme */
+.moira-theme-red {
+  --moira-primary: #dc2626;
+  --moira-primary-hover: #b91c1c;
+  --moira-secondary: #f87171;
+  --moira-accent: #fca5a5;
+  --moira-bg: #1c1917;
+  --moira-bg-light: #292524;
+  --moira-surface: #292524;
+  --moira-surface-hover: #44403c;
+  --moira-text: #fafaf9;
+  --moira-text-muted: #d6d3d1;
+  --moira-border: #7f1d1d;
+  --moira-success: #10b981;
+  --moira-danger: #dc2626;
+  --moira-warning: #f59e0b;
+}
+
+/* ============================================================
+   CHAT DIALOG
+   ============================================================ */
+.moira-chat-dialog {
+  font-family: var(--moira-font-family);
+  background: var(--moira-bg);
+  border: 2px solid var(--moira-primary);
+  border-radius: var(--moira-border-radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.moira-chat-dialog .window-content {
+  background: var(--moira-bg);
+  padding: 0;
+  color: var(--moira-text);
+}
+
+.moira-chat-dialog .dialog-buttons {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--moira-surface);
+  border-top: 1px solid var(--moira-border);
+}
+
+.moira-chat-dialog .dialog-button {
+  background: var(--moira-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: var(--moira-transition);
+}
+
+.moira-chat-dialog .dialog-button:hover {
+  background: var(--moira-primary-hover);
+}
+
+/* ============================================================
+   CHAT CONTAINER
+   ============================================================ */
+.moira-chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 500px;
+}
+
+.moira-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--moira-surface);
+  border-bottom: 1px solid var(--moira-border);
+}
+
+.moira-chat-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--moira-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.moira-chat-header h2 i {
+  color: var(--moira-primary);
+}
+
+.moira-chat-header .moira-version {
+  font-size: 11px;
+  color: var(--moira-text-muted);
+  background: var(--moira-bg-light);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.moira-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--moira-bg-light);
+}
+
+/* ============================================================
+   MESSAGES
+   ============================================================ */
+.moira-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  animation: moira-fade-in 0.3s ease;
+}
+
+@keyframes moira-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.moira-message--user {
+  align-self: flex-end;
+}
+
+.moira-message--assistant {
+  align-self: flex-start;
+}
+
+.moira-message__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--moira-text-muted);
+}
+
+.moira-message--user .moira-message__header {
+  flex-direction: row-reverse;
+}
+
+.moira-message__header i {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--moira-surface);
+  color: var(--moira-primary);
+  font-size: 10px;
+}
+
+.moira-message--user .moira-message__header i {
+  background: var(--moira-primary);
+  color: white;
+}
+
+.moira-message__name {
+  font-weight: 600;
+}
+
+.moira-message__time {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.moira-message__content {
+  padding: 12px 16px;
+  border-radius: var(--moira-border-radius);
+  line-height: 1.6;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+.moira-message--user .moira-message__content {
+  background: var(--moira-primary);
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.moira-message--assistant .moira-message__content {
+  background: var(--moira-surface);
+  color: var(--moira-text);
+  border-bottom-left-radius: 2px;
+}
+
+.moira-message__content strong {
+  color: var(--moira-accent);
+}
+
+.moira-message__content code {
+  background: var(--moira-bg-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.moira-message__content pre {
+  background: var(--moira-bg);
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+
+.moira-message__content pre code {
+  background: none;
+  padding: 0;
+}
+
+.moira-message__content img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.moira-message__actions {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  opacity: 0;
+  transition: var(--moira-transition);
+}
+
+.moira-message:hover .moira-message__actions {
+  opacity: 1;
+}
+
+.moira-msg-btn {
+  background: var(--moira-surface);
+  border: none;
+  color: var(--moira-text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--moira-transition);
+}
+
+.moira-msg-btn:hover {
+  background: var(--moira-primary);
+  color: white;
+}
+
+/* ============================================================
+   TYPING INDICATOR
+   ============================================================ */
+.moira-typing {
+  align-self: flex-start;
+}
+
+.moira-typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--moira-surface);
+  border-radius: var(--moira-border-radius);
+  border-bottom-left-radius: 2px;
+}
+
+.moira-typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: var(--moira-primary);
+  border-radius: 50%;
+  animation: moira-typing-bounce 1.4s infinite ease-in-out;
+}
+
+.moira-typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.moira-typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes moira-typing-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   INPUT AREA
+   ============================================================ */
+.moira-input-area {
+  padding: 12px 16px;
+  background: var(--moira-surface);
+  border-top: 1px solid var(--moira-border);
+}
+
+.moira-prompt-input {
+  width: 100%;
+  background: var(--moira-bg-light);
+  border: 1px solid var(--moira-border);
+  border-radius: var(--moira-border-radius);
+  color: var(--moira-text);
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: var(--moira-font-family);
+  resize: none;
+  min-height: 48px;
+  max-height: 150px;
+  outline: none;
+  transition: var(--moira-transition);
+  box-sizing: border-box;
+}
+
+.moira-prompt-input:focus {
+  border-color: var(--moira-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.moira-prompt-input::placeholder {
+  color: var(--moira-text-muted);
+}
+
+.moira-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.moira-input-tools {
+  display: flex;
+  gap: 8px;
+}
+
+.moira-send-btn {
+  background: var(--moira-primary);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: var(--moira-transition);
+}
+
+.moira-send-btn:hover {
+  background: var(--moira-primary-hover);
+  transform: scale(1.05);
+}
+
+.moira-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.moira-tool-btn {
+  background: var(--moira-surface-hover);
+  color: var(--moira-text-muted);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--moira-transition);
+}
+
+.moira-tool-btn:hover {
+  background: var(--moira-primary);
+  color: white;
+}
+
+/* ============================================================
+   STATUS BAR
+   ============================================================ */
+.moira-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--moira-bg);
+  font-size: 12px;
+  color: var(--moira-text-muted);
+  border-top: 1px solid var(--moira-border);
+}
+
+.moira-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.moira-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.moira-status-dot--connected {
+  background: var(--moira-success);
+  box-shadow: 0 0 6px var(--moira-success);
+}
+
+.moira-status-dot--disconnected {
+  background: var(--moira-danger);
+}
+
+/* ============================================================
+   SETTINGS DIALOG
+   ============================================================ */
+.moira-settings-dialog .window-content {
+  font-family: var(--moira-font-family);
+  background: var(--moira-bg);
+  color: var(--moira-text);
+  padding: 20px;
+}
+
+.moira-settings-section {
+  margin-bottom: 20px;
+}
+
+.moira-settings-section h3 {
+  font-size: 14px;
+  color: var(--moira-primary);
+  border-bottom: 1px solid var(--moira-border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.moira-form-group {
+  margin-bottom: 12px;
+}
+
+.moira-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--moira-text);
+}
+
+.moira-form-group .hint {
+  font-size: 11px;
+  color: var(--moira-text-muted);
+  margin-top: 2px;
+}
+
+.moira-form-group input,
+.moira-form-group select,
+.moira-form-group textarea {
+  width: 100%;
+  background: var(--moira-bg-light);
+  border: 1px solid var(--moira-border);
+  border-radius: 6px;
+  color: var(--moira-text);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: var(--moira-font-family);
+  box-sizing: border-box;
+}
+
+.moira-form-group input:focus,
+.moira-form-group select:focus,
+.moira-form-group textarea:focus {
+  outline: none;
+  border-color: var(--moira-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.moira-form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.moira-settings-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.moira-settings-actions button {
+  background: var(--moira-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: var(--moira-transition);
+}
+
+.moira-settings-actions button:hover {
+  background: var(--moira-primary-hover);
+}
+
+.moira-settings-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.moira-connection-status {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.moira-connection-status .success {
+  color: var(--moira-success);
+}
+
+.moira-connection-status .error {
+  color: var(--moira-danger);
+}
+
+/* ============================================================
+   IMAGE GENERATION MODAL
+   ============================================================ */
+.moira-image-gen-modal .window-content {
+  font-family: var(--moira-font-family);
+  background: var(--moira-bg);
+  color: var(--moira-text);
+  padding: 20px;
+}
+
+.moira-img-preview {
+  margin: 16px 0;
+  min-height: 200px;
+  background: var(--moira-bg-light);
+  border-radius: var(--moira-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.moira-img-preview img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.moira-img-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--moira-text-muted);
+}
+
+.moira-img-loading i {
+  color: var(--moira-primary);
+  margin-bottom: 12px;
+}
+
+.moira-img-error {
+  text-align: center;
+  padding: 40px;
+  color: var(--moira-danger);
+}
+
+.moira-img-actions {
+  display: none;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.moira-img-actions button {
+  background: var(--moira-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* ============================================================
+   QUEUE VIEWER
+   ============================================================ */
+.moira-queue-dialog .window-content {
+  font-family: var(--moira-font-family);
+  background: var(--moira-bg);
+  color: var(--moira-text);
+  padding: 16px;
+}
+
+.moira-queue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.moira-queue-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--moira-text);
+}
+
+.moira-queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.moira-queue-item {
+  background: var(--moira-surface);
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.moira-queue-item-info {
+  flex: 1;
+}
+
+.moira-queue-item-label {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.moira-queue-item-meta {
+  font-size: 11px;
+  color: var(--moira-text-muted);
+  margin-top: 2px;
+}
+
+.moira-queue-item-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.moira-queue-item-status--pending {
+  background: var(--moira-warning);
+  color: black;
+}
+
+.moira-queue-item-status--success {
+  background: var(--moira-success);
+  color: white;
+}
+
+.moira-queue-item-status--error {
+  background: var(--moira-danger);
+  color: white;
+}
+
+.moira-queue-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--moira-text-muted);
+}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.moira-gallery-dialog .window-content {
+  font-family: var(--moira-font-family);
+  background: var(--moira-bg);
+  color: var(--moira-text);
+  padding: 16px;
+}
+
+.moira-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.moira-gallery-item {
+  background: var(--moira-surface);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: var(--moira-transition);
+}
+
+.moira-gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.moira-gallery-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.moira-gallery-item-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 8px;
+  opacity: 0;
+  transition: var(--moira-transition);
+}
+
+.moira-gallery-item:hover .moira-gallery-item-overlay {
+  opacity: 1;
+}
+
+.moira-gallery-item-prompt {
+  font-size: 11px;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moira-gallery-empty {
+  text-align: center;
+  padding: 60px;
+  color: var(--moira-text-muted);
+  grid-column: 1 / -1;
+}
+
+/* ============================================================
+   ONBOARDING
+   ============================================================ */
+.moira-onboarding-dialog .window-content {
+  font-family: var(--moira-font-family);
+  background: var(--moira-bg);
+  color: var(--moira-text);
+  padding: 32px;
+  text-align: center;
+}
+
+.moira-onboarding-icon {
+  font-size: 64px;
+  color: var(--moira-primary);
+  margin-bottom: 16px;
+}
+
+.moira-onboarding-dialog h2 {
+  color: var(--moira-text);
+  margin-bottom: 8px;
+}
+
+.moira-onboarding-dialog p {
+  color: var(--moira-text-muted);
+  margin-bottom: 24px;
+}
+
+.moira-onboarding-features {
+  text-align: left;
+  margin: 24px 0;
+}
+
+.moira-onboarding-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.moira-onboarding-feature i {
+  color: var(--moira-success);
+  width: 20px;
+}
+
+.moira-onboarding-dialog button {
+  background: var(--moira-primary);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: var(--moira-transition);
+}
+
+.moira-onboarding-dialog button:hover {
+  background: var(--moira-primary-hover);
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   SIDEBAR BUTTON
+   ============================================================ */
+.moira-sidebar-btn {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+}
+
+.moira-sidebar-btn i {
+  color: var(--moira-primary);
+  font-size: 18px;
+}
+
+.moira-sidebar-btn:hover i {
+  color: white;
+}
+
+.moira-sidebar-btn .tab-label {
+  font-size: 11px;
+}
+
+/* ============================================================
+   ERROR STATES
+   ============================================================ */
+.moira-error {
+  padding: 16px;
+  background: var(--moira-danger);
+  color: white;
+  border-radius: var(--moira-border-radius);
+  text-align: center;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+.moira-chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.moira-chat-messages::-webkit-scrollbar-track {
+  background: var(--moira-bg-light);
+}
+
+.moira-chat-messages::-webkit-scrollbar-thumb {
+  background: var(--moira-border);
+  border-radius: 4px;
+}
+
+.moira-chat-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--moira-primary);
+}
+
+/* ============================================================
+   DIALOG STYLES (overrides for Foundry dialogs)
+   ============================================================ */
+.dialog {
+  border-radius: var(--moira-border-radius);
+}
+
+.dialog .window-content {
+  background: var(--moira-bg);
+  color: var(--moira-text);
+}
+
+/* Form application inputs */
+form .form-group {
+  margin-bottom: 12px;
+}
+
+form .form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--moira-text);
+}
+
+form .form-group input,
+form .form-group select,
+form .form-group textarea {
+  width: 100%;
+  background: var(--moira-bg-light) !important;
+  border: 1px solid var(--moira-border) !important;
+  border-radius: 6px;
+  color: var(--moira-text) !important;
+  padding: 8px 12px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+form .form-group input:focus,
+form .form-group select:focus,
+form .form-group textarea:focus {
+  outline: none;
+  border-color: var(--moira-primary) !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Button styles for dialogs */
+button {
+  background: var(--moira-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: var(--moira-transition);
+}
+
+button:hover {
+  background: var(--moira-primary-hover);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Apply theme to all Foundry dialog content */
+.app.window-app .window-content {
+  font-family: var(--moira-font-family);
+}

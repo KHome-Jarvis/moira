@@ -1,0 +1,41 @@
+{
+  "title": "Moira - AI Game Master",
+  "description": "Moira is your AI-powered Game Master companion for Foundry VTT. Chat with AI, generate images, create NPCs, detect walls, and more — all powered by your local Hermes Gateway.",
+  "version": "1.0.0",
+  "url": "https://github.com/KHome-Jarvis/moira",
+  "manifest": "https://raw.githubusercontent.com/KHome-Jarvis/moira/main/module.json",
+  "download": "https://github.com/KHome-Jarvis/moira/releases/download/1.0.0/moira-1.0.0.zip",
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "esmodules": [
+    "src/moira-init.js"
+  ],
+  "styles": [
+    "src/styles.css"
+  ],
+  "id": "moira",
+  "authors": [
+    {
+      "name": "J.A.R.V.I.S.",
+      "email": "jarvis-kreutzer@agentmail.to",
+      "url": "https://github.com/KHome-Jarvis"
+    }
+  ],
+  "persistentStorage": true,
+  "compatibility": {
+    "minimum": "12",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["templates", "src", "lang"]
+    }
+  }
+}

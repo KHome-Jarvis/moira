@@ -1,0 +1,143 @@
+<div class="moira-settings-container">
+  <form>
+    <!-- Connection Section -->
+    <div class="moira-settings-section">
+      <h3><i class="fas fa-plug"></i> Connection</h3>
+
+      <div class="moira-form-group">
+        <label>Hermes Endpoint</label>
+        <input type="text" name="moira_hermesEndpoint" value="{{endpoint}}" placeholder="http://192.168.1.26:8642">
+        <div class="hint">Full URL to your Hermes Gateway (include http:// and port)</div>
+      </div>
+
+      <div class="moira-form-group">
+        <label>API Key</label>
+        <input type="password" name="moira_hermesApiKey" value="{{apiKey}}" placeholder="Enter your API key">
+        <div class="hint">Your Hermes Gateway API key for authentication</div>
+      </div>
+
+      <div class="moira-form-group">
+        <div class="moira-connection-status">
+          {{#if connected}}
+          <span class="success"><i class="fas fa-check-circle"></i> Connected</span>
+          {{else}}
+          <span class="error"><i class="fas fa-times-circle"></i> Not connected</span>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="moira-settings-actions">
+        <button type="button" data-action="test-connection">
+          <i class="fas fa-plug"></i> Test Connection
+        </button>
+      </div>
+    </div>
+
+    <!-- Model Section -->
+    <div class="moira-settings-section">
+      <h3><i class="fas fa-brain"></i> AI Model</h3>
+
+      <div class="moira-form-group">
+        <label>Default Chat Model</label>
+        <select name="moira_defaultModel">
+          {{#each models}}
+          <option value="{{@key}}" {{#if (eq ../defaultModel @key)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+        <div class="hint">Model used for chat and text generation</div>
+      </div>
+
+      <div class="moira-form-group">
+        <label>Image Generation Model</label>
+        <select name="moira_imageModel">
+          {{#each imageModels}}
+          <option value="{{@key}}" {{#if (eq imageModel @key)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="moira-form-group">
+        <label>Default Image Size</label>
+        <select name="moira_imageSize">
+          {{#each sizes}}
+          <option value="{{@key}}" {{#if (eq ../imageSize @key)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="moira-form-group">
+        <label>
+          <input type="checkbox" name="moira_streamingEnabled" {{#if streamingEnabled}}checked{{/if}}>
+          Enable Streaming Responses
+        </label>
+        <div class="hint">Stream AI responses in real-time (may feel slower but more responsive)</div>
+      </div>
+    </div>
+
+    <!-- Game System Section -->
+    <div class="moira-settings-section">
+      <h3><i class="fas fa-dice"></i> Game System</h3>
+
+      <div class="moira-form-group">
+        <label>Active System</label>
+        <select name="moira_activeSystem">
+          {{#each systems}}
+          <option value="{{@key}}" {{#if (eq ../activeSystem @key)}}selected{{/if}}>{{this.name}}</option>
+          {{/each}}
+        </select>
+        <div class="hint">RPG system for contextual game master prompts</div>
+      </div>
+
+      <div class="moira-form-group">
+        <label>Custom System Prompt</label>
+        <textarea name="moira_systemPrompt" rows="3" placeholder="Leave empty to use default system prompt for your game...">{{systemPrompt}}</textarea>
+        <div class="hint">Override the default system prompt with custom instructions</div>
+      </div>
+    </div>
+
+    <!-- Appearance Section -->
+    <div class="moira-settings-section">
+      <h3><i class="fas fa-palette"></i> Appearance</h3>
+
+      <div class="moira-form-group">
+        <label>Theme</label>
+        <select name="moira_theme">
+          {{#each themes}}
+          <option value="{{@key}}" {{#if (eq ../theme @key)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="moira-form-group">
+        <label>
+          <input type="checkbox" name="moira_showSidebarButton" {{#if showSidebarButton}}checked{{/if}}>
+          Show sidebar button
+        </label>
+      </div>
+
+      <div class="moira-form-group">
+        <label>
+          <input type="checkbox" name="moira_autoConnect" {{#if autoConnect}}checked{{/if}}>
+          Auto-connect on Foundry startup
+        </label>
+      </div>
+    </div>
+
+    <!-- Data Management -->
+    <div class="moira-settings-section">
+      <h3><i class="fas fa-database"></i> Data</h3>
+
+      <div class="moira-settings-actions">
+        <button type="button" data-action="clear-queue" style="background: var(--moira-warning); color: black;">
+          <i class="fas fa-trash"></i> Clear Queue
+        </button>
+        <button type="button" data-action="clear-gallery" style="background: var(--moira-danger);">
+          <i class="fas fa-trash"></i> Clear Gallery
+        </button>
+        <button type="button" data-action="open-gallery" style="background: var(--moira-surface-hover); color: var(--moira-text);">
+          <i class="fas fa-images"></i> Open Gallery
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
