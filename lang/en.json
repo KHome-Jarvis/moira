@@ -1,4 +1,98 @@
 {
-  "MODULE.moira": "Moira",
-  "MODULE.moiraDescription": "AI-powered GM companion"
+  "label": "Moira - AI Game Master",
+  "hint": "Enable AI-powered game master features including chat, image generation, and more.",
+  "settings": {
+    "hermesApiKey": "Hermes API Key",
+    "hermesApiKeyHint": "Your Hermes Gateway API key for authentication",
+    "hermesEndpoint": "Hermes Endpoint",
+    "hermesEndpointHint": "Full URL to your Hermes Gateway (e.g. http://192.168.1.26:8642)",
+    "defaultModel": "Default AI Model",
+    "defaultModelHint": "Model used for chat and text generation",
+    "imageModel": "Image Generation Model",
+    "imageModelHint": "Model used for image generation",
+    "activeSystem": "Game System",
+    "activeSystemHint": "RPG system for contextual Game Master prompts",
+    "systemPrompt": "Custom System Prompt",
+    "systemPromptHint": "Override the default system prompt with custom instructions",
+    "showSidebarButton": "Show Sidebar Button",
+    "showSidebarButtonHint": "Display Moira button in the sidebar",
+    "theme": "Theme",
+    "themeHint": "Color theme for Moira interface",
+    "autoConnect": "Auto-connect on startup",
+    "autoConnectHint": "Test Hermes connection when Foundry starts",
+    "streamingEnabled": "Enable Streaming Responses",
+    "streamingEnabledHint": "Stream AI responses in real-time",
+    "imageSize": "Default Image Size",
+    "imageSizeHint": "Default size for generated images"
+  },
+  "chat": {
+    "title": "Moira - AI Chat",
+    "placeholder": "Ask Moira anything... (Enter to send, Shift+Enter for new line)",
+    "send": "Send",
+    "settings": "Settings",
+    "clearHistory": "Clear History",
+    "connected": "Connected",
+    "notConnected": "Not connected",
+    "error": "Error",
+    "typing": "Moira is thinking..."
+  },
+  "imageGen": {
+    "title": "Generate Image",
+    "promptPlaceholder": "Describe the image you want to generate...",
+    "generate": "Generate",
+    "generating": "Generating...",
+    "useInJournal": "Save to Journal",
+    "copyUrl": "Copy URL",
+    "previewPlaceholder": "Preview will appear here",
+    "error": "Image generation failed"
+  },
+  "gallery": {
+    "title": "Moira Gallery",
+    "empty": "No images generated yet",
+    "emptyHint": "Use the chat to generate images with Moira",
+    "use": "Use",
+    "delete": "Delete",
+    "saved": "Image saved to journal"
+  },
+  "queue": {
+    "title": "Moira Queue",
+    "empty": "No jobs in queue",
+    "pending": "Pending",
+    "success": "Success",
+    "error": "Error",
+    "clearAll": "Clear All",
+    "refresh": "Refresh"
+  },
+  "onboarding": {
+    "welcome": "Welcome to Moira",
+    "subtitle": "Your AI Game Master companion for Foundry VTT",
+    "getStarted": "Get Started",
+    "features": {
+      "chat": "AI Chat - Ask questions, get story inspiration, NPC descriptions",
+      "images": "Image Generation - Create scene art, maps, and character portraits",
+      "enhance": "Text Enhancement - Improve, expand, or convert text to dialogue",
+      "translate": "Translation - Translate game text to any language",
+      "gallery": "Gallery - Save and organize generated images",
+      "queue": "Queue System - Track image generation jobs"
+    }
+  },
+  "errors": {
+    "noApiKey": "No API key configured. Open Moira settings to enter your Hermes API key.",
+    "connectionFailed": "Could not connect to Hermes Gateway. Please check your API key in settings.",
+    "noResponse": "I did not receive a response. Please try again.",
+    "imageFailed": "Image generation failed"
+  },
+  "systems": {
+    "dnd5e": "D&D 5E",
+    "pf2e": "Pathfinder 2E",
+    "sf2e": "Starfinder 2E",
+    "coterie": "Chronicles of Darkness",
+    "wfrp4e": "Warhammer Fantasy 4E",
+    "coc7": "Call of Cthulhu 7E",
+    "swade": "SWADE (SWN)",
+    "ose": "Old School Essentials",
+    "zone": "The Zone",
+    "bladerunner": "Blade Runner",
+    "default": "Generic RPG"
+  }
 }
