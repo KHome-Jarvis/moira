@@ -45,5 +45,6 @@
         "lang"
       ]
     }
-  }
+  },
+  "download": "https://github.com/KHome-Jarvis/moira/releases/download/v0.0.4/moira-module.zip"
 }
