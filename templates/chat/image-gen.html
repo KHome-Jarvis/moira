@@ -1,0 +1,57 @@
+<div class="moira-image-gen-container">
+  <form>
+    <div class="moira-form-group">
+      <label for="img-prompt">Image Prompt</label>
+      <textarea
+        name="prompt"
+        id="img-prompt"
+        rows="4"
+        placeholder="Describe the image you want to generate..."
+        style="width: 100%; background: var(--moira-bg-light); border: 1px solid var(--moira-border); border-radius: 6px; color: var(--moira-text); padding: 10px; font-size: 13px; resize: vertical; font-family: inherit;"
+      >{{prompt}}</textarea>
+    </div>
+
+    <div class="moira-form-group">
+      <label for="img-size">Size</label>
+      <select name="size" id="img-size" style="width: 100%; background: var(--moira-bg-light); border: 1px solid var(--moira-border); border-radius: 6px; color: var(--moira-text); padding: 8px; font-size: 13px;">
+        {{#each sizes}}
+        <option value="{{@key}}" {{#if (eq ../size @key)}}selected{{/if}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="moira-form-group">
+      <label for="img-model">Model</label>
+      <select name="model" id="img-model" style="width: 100%; background: var(--moira-bg-light); border: 1px solid var(--moira-border); border-radius: 6px; color: var(--moira-text); padding: 8px; font-size: 13px;">
+        {{#each models}}
+        <option value="{{@key}}" {{#if (eq ../selectedModel @key)}}selected{{/if}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="moira-img-preview" style="min-height: 200px; background: var(--moira-bg-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 16px 0; overflow: hidden;">
+      <div style="text-align: center; color: var(--moira-text-muted);">
+        <i class="fas fa-image" style="font-size: 48px; opacity: 0.3;"></i>
+        <p style="margin-top: 8px; font-size: 13px;">Preview will appear here</p>
+      </div>
+    </div>
+
+    <div class="moira-img-actions" style="display: none; gap: 8px; margin-top: 12px;">
+      <button type="button" class="moira-img-use-btn" style="flex: 1; background: var(--moira-primary); color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer;">
+        <i class="fas fa-journal"></i> Save to Journal
+      </button>
+      <button type="button" class="moira-img-copy-btn" style="flex: 1; background: var(--moira-surface-hover); color: var(--moira-text); border: none; padding: 10px; border-radius: 6px; cursor: pointer;">
+        <i class="fas fa-copy"></i> Copy URL
+      </button>
+    </div>
+  </form>
+</div>
+
+<div style="padding: 12px; border-top: 1px solid var(--moira-border); display: flex; gap: 8px; justify-content: flex-end;">
+  <button type="button" class="moira-img-cancel-btn" onclick="close()" style="background: var(--moira-surface-hover); color: var(--moira-text); border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+    Cancel
+  </button>
+  <button type="button" class="moira-img-generate-btn" style="background: var(--moira-primary); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+    <i class="fas fa-image"></i> Generate
+  </button>
+</div>
