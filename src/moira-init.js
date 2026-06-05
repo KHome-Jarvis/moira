@@ -50,11 +50,11 @@ class MoiraSettings {
     // Hermes Endpoint
     game.settings.register('moira', 'hermesEndpoint', {
       name: 'Hermes Endpoint',
-      hint: 'Hermes Gateway URL (e.g. http://192.168.1.26:8642)',
+      hint: 'Hermes Gateway URL (e.g. http://192.168.1.26:8643)',
       scope: 'world',
       config: true,
       type: String,
-      default: 'http://192.168.1.26:8642'
+      default: 'http://192.168.1.26:8643'
     });
 
     // Default Model
@@ -171,6 +171,21 @@ class MoiraSettings {
       default: true
     });
 
+    // Shown Onboarding (internal flag)
+    game.settings.register('moira', 'shownOnboarding', {
+      name: 'Onboarding Shown',
+      hint: 'Internal flag for onboarding flow',
+      scope: 'world',
+      config: false,
+      type: Boolean,
+      default: false
+    });
+
+  // Show sidebar button if enabled
+  if (game.settings.get('moira', 'showSidebarButton')) {
+    MoiraSidebar.inject();
+  }
+
     // Image size
     game.settings.register('moira', 'imageSize', {
       name: 'Default Image Size',
@@ -237,7 +252,7 @@ class MoiraAPI {
   }
 
   getEndpoint() {
-    return game.settings.get('moira', 'hermesEndpoint') || 'http://192.168.1.26:8642';
+    return game.settings.get('moira', 'hermesEndpoint') || 'http://192.168.1.26:8643';
   }
 
   getModel() {
@@ -1235,8 +1250,6 @@ Hooks.once('setup', () => {
 
 Hooks.once('ready', async () => {
   console.log('Moira v' + Moira.version + ' ready');
-
-  MoiraSidebar.inject();
 
   if (game.settings.get('moira', 'autoConnect')) {
     try {
